@@ -32,9 +32,9 @@ func (g Goextron) GetAuthStatus() error {
 }
 
 func (g Goextron) SetMute(muted bool) error {
-	muteReq := "[{\"uri\":\"/video/in/channel/2/active_input\",\"value\":5}, {\"uri\":\"/audio/dsp/out/mute\",\"value\":0}]"
+	muteReq := "[{\"uri\":\"/video/in/channel/1/active_input\",\"value\":1}, {\"uri\":\"/video/in/channel/2/active_input\",\"value\":5}, {\"uri\":\"/audio/dsp/out/mute\",\"value\":0}]"
 	if muted {
-		muteReq = "[{\"uri\":\"/video/in/channel/2/active_input\",\"value\":4}, {\"uri\":\"/audio/dsp/out/mute\",\"value\":1}]"
+		muteReq = "[{\"uri\":\"/video/in/channel/1/active_input\",\"value\":2}, {\"uri\":\"/video/in/channel/2/active_input\",\"value\":4}, {\"uri\":\"/audio/dsp/out/mute\",\"value\":1}]"
 	}
 	body := strings.NewReader(muteReq)
 	req, err := http.NewRequest("PUT", fmt.Sprintf("%sapi/swis/resources", g.addr), body)
